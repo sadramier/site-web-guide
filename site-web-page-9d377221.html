@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500彩票网 · 一站式彩票信息导航</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(145deg, #fce3b8 0%, #fbc682 40%, #f7a84b 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2d241c;
+            line-height: 1.6;
+        }
+        .page-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            flex: 1;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            box-shadow: 0 18px 36px -10px rgba(140, 70, 10, 0.25), 0 2px 6px rgba(0,0,0,0.04);
+            padding: 2.2rem 2.4rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 22px 42px -12px rgba(160, 80, 10, 0.32);
+        }
+
+        /* hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 2.8rem 2.4rem;
+        }
+        .hero-text {
+            flex: 1 1 280px;
+        }
+        .hero-text h1 {
+            font-size: 2.4rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b1571a, #753d0e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+        .hero-text p {
+            font-size: 1.08rem;
+            color: #3f2e1f;
+            max-width: 520px;
+        }
+        .hero-visual {
+            flex: 0 0 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-badge {
+            background: #ffb56b;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: #3f200c;
+            box-shadow: 0 8px 0 #c57d39;
+            font-size: 1rem;
+            line-height: 1.3;
+            text-align: center;
+        }
+        .hero-badge span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* 优势网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.4rem;
+            margin-top: 0.2rem;
+        }
+        .advantage-item {
+            background: #fff9f0;
+            border-radius: 22px;
+            padding: 1.4rem 1.2rem;
+            border-left: 6px solid #f09b4c;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .advantage-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #572f12;
+        }
+        .advantage-item p {
+            font-size: 0.95rem;
+            color: #4d3726;
+        }
+
+        /* 说明区 + 内嵌链接 */
+        .explain-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .explain-block .text-col {
+            flex: 2;
+            min-width: 220px;
+        }
+        .explain-block .highlight-col {
+            flex: 1;
+            min-width: 160px;
+            background: #fcebd8;
+            border-radius: 24px;
+            padding: 1.4rem 1.4rem;
+            align-self: flex-start;
+        }
+        .explain-block a {
+            color: #a85a1b;
+            text-decoration: none;
+            font-weight: 600;
+            padding-bottom: 2px;
+            border-bottom: 2px solid #f0b37a;
+            transition: background 0.15s;
+        }
+        .explain-block a:hover {
+            background: #fae1c0;
+            border-bottom-color: #bd6a23;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #efdcc9;
+        }
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #542f12;
+            font-size: 1.02rem;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: #4f3b2b;
+        }
+
+        /* 底部 */
+        .footer-links {
+            text-align: center;
+            padding: 1.8rem 0.5rem 0.5rem;
+            border-top: 1px solid rgba(255, 255, 240, 0.5);
+            margin-top: 2.4rem;
+            font-size: 0.95rem;
+        }
+        .footer-links a {
+            color: #4a2d16;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            background: rgba(255, 255, 240, 0.35);
+            border-radius: 40px;
+            transition: background 0.2s;
+        }
+        .footer-links a:hover {
+            background: rgba(255, 230, 190, 0.8);
+        }
+
+        .attribution {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .page-wrapper { padding: 1.2rem 0.9rem; }
+            .card { padding: 1.6rem 1.2rem; }
+            .hero-text h1 { font-size: 1.9rem; }
+            .hero-badge { width: 90px; height: 90px; font-size: 0.9rem; }
+            .hero-badge span { font-size: 1.3rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- HERO 区 -->
+        <div class="card hero">
+            <div class="hero-text">
+                <h1>500彩票网 · 信息聚合平台</h1>
+                <p>快速识别彩票资讯、数据查询与玩法说明，帮助用户高效定位所需内容。不提供购彩、不设交易，只做透明的信息窗口。</p>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-badge">
+                    <span>✦</span>
+                    信息<br>导航
+                </div>
+            </div>
+        </div>
+
+        <!-- 优势区 -->
+        <div class="card">
+            <h2 style="font-weight: 600; font-size: 1.4rem; margin-bottom: 1rem; color: #3f220d;">核心优势</h2>
+            <div class="grid-3">
+                <div class="advantage-item">
+                    <h3>📊 数据集中</h3>
+                    <p>汇总多种彩种的历史开奖号码、走势图表，省去跨网站比对的麻烦。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>📄 规则清晰</h3>
+                    <p>每个彩种均配有玩法说明、中奖条件与奖金结构，便于快速理解。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>🔍 搜索直达</h3>
+                    <p>站内检索功能可精准定位到具体期号或彩种，提升查找效率。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区 + 链接自然嵌入 -->
+        <div class="card">
+            <div class="explain-block">
+                <div class="text-col">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: #492c16;">这个网站是做什么的？</h3>
+                    <p>很多用户第一次接触 <a href="https://site-web-500.com">500彩票网</a> 时，会以为它是一个直接购彩的平台。实际上，它的核心定位是<strong>彩票信息聚合与查询工具</strong>：你可以在这里查到各类彩种的开奖公告、历史走势、玩法规则以及相关的行业资讯。网站本身不涉及资金交易，也不提供购彩服务，因此适合用作辅助参考。如果你只是想快速确认某个彩票的规则或最近几期的开奖号码，通过 <a href="https://site-web-500.com">500彩票网</a> 通常比逐个搜索更省时。</p>
+                    <p style="margin-top: 0.6rem;">此外，平台还整理了部分彩票术语解读、概率说明等内容，帮助新手减少信息门槛。</p>
+                </div>
+                <div class="highlight-col">
+                    <p style="font-weight: 600; color: #4f2b0d;">📌 适合场景</p>
+                    <ul style="list-style: none; margin-top: 0.6rem; font-size: 0.95rem;">
+                        <li>✓ 查询往期开奖号码</li>
+                        <li>✓ 对比不同彩种玩法</li>
+                        <li>✓ 理解奖金计算方式</li>
+                        <li>✓ 跟踪开奖时间表</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card">
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #452912;">常见疑问摘要</h3>
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <div class="faq-q">▸ 需要注册才能使用吗？</div>
+                    <div class="faq-a">大部分数据查询功能无需登录，可直接浏览开奖号码与规则说明。部分进阶功能（如收藏彩种）可能需要轻量注册。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">▸ 开奖数据更新是否及时？</div>
+                    <div class="faq-a">通常会在官方公布后数分钟内同步，但具体时效取决于数据源。建议结合官方渠道交叉确认重要信息。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">▸ 能否查到很久以前的历史数据？</div>
+                    <div class="faq-a">平台保留近数年的开奖记录，更早期的数据可能仅提供部分或需要手动检索。</div>
+                </div>
+                <div class="faq-item" style="border-bottom: none; padding-bottom: 0;">
+                    <div class="faq-q">▸ 网站是否安全？</div>
+                    <div class="faq-a">是的，该站点采用标准 HTTPS 加密，且不收集敏感财务信息。不过，请留意页面上的外部链接。</div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #5d3e27;">以上仅为常见问题摘要，完整 FAQ 可至站内帮助部分查看。</p>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <p>如需查阅最新彩票信息与相关说明，可直接访问 <a href="https://site-web-500.com">500彩票网</a> · 内容仅供参考，理性对待。</p>
+            <div class="attribution">— 信息聚合页面 · 非购彩平台 —</div>
+        </div>
+    </div>
+</body>
+</html>
